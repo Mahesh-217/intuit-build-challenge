@@ -38,13 +38,6 @@ python -m unittest -v
 
 For more details on the design, blocking behavior, and test coverage, see `Assignment1/README.md`.
 
-### Sample Output
-For full output and details, see `Assignment1/README.md`.
-
-```
-Processed 8192 items in 0.011018 seconds
-Max absolute error vs math.cos: 0.000000e+00
-```
 
 ## Assignment 2: Sales Data Analysis
 **Path:** `Assignment2/`  

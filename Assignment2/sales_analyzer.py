@@ -148,7 +148,7 @@ class SalesAnalyzer:
 
 def main():
     """Execute comprehensive sales analysis"""
-    analyzer = SalesAnalyzer('/Volumes/workplace/Intuit-build-challenge/Assignment2/sales_data.csv')
+    analyzer = SalesAnalyzer('sales_data.csv')
     
     print("=== ADVANCED SALES DATA ANALYSIS ===\n")
     

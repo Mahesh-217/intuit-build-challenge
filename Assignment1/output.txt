@@ -1,0 +1,23 @@
+Sample Output
+
+python3 Assignment1/producer_consumer.py
+Running producer–consumer pipeline...
+
+=== Pipeline Summary ===
+Source Data:       [1, 2, 3, 4, 5]
+Destination Data:      [1, 2, 3, 4, 5]
+Items in:    5
+Items out:   5
+Status:      Completed successfully.
+
+
+Code Coverage
+
+source .venv/bin/activate && python -m coverage report -m
+Name                               Stmts   Miss  Cover   Missing
+----------------------------------------------------------------
+Assignment1/__init__.py                0      0   100%
+Assignment1/blocking_queue.py         58      0   100%
+Assignment1/producer_consumer.py      45      2    96%   6-7
+----------------------------------------------------------------
+TOTAL                                103      2    98%

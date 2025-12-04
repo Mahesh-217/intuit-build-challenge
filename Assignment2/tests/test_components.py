@@ -3,8 +3,8 @@
 import unittest
 import tempfile
 import os
-from sales_model import SalesRecord
-from sales_reader import read_sales_data
+from Assignment2.sales_model import SalesRecord
+from Assignment2.sales_reader import read_sales_data
 
 class TestComponents(unittest.TestCase):
     

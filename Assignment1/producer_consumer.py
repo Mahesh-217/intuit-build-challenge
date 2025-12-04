@@ -1,10 +1,8 @@
 import threading
 from dataclasses import dataclass, field
 from typing import Generic, Iterable, List, TypeVar, cast
-try:
-    from .blocking_queue import BlockingQueue
-except ImportError:
-    from blocking_queue import BlockingQueue
+from .blocking_queue import BlockingQueue
+
 import time
 
 # Generic type variable for type-safe producer-consumer

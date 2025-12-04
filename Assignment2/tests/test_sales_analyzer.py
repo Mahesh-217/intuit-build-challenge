@@ -13,7 +13,7 @@ import os
 REPO_ROOT = Path(__file__).resolve().parent
 sys.path.insert(0, str(REPO_ROOT))
 
-from sales_analyzer import SalesAnalyzer
+from Assignment2.sales_analyzer import SalesAnalyzer
 
 
 class TestSalesAnalyzer(unittest.TestCase):
@@ -221,7 +221,7 @@ class TestSalesAnalyzer(unittest.TestCase):
         
         try:
             # Import and execute main function
-            from sales_analyzer import main
+            from Assignment2.sales_analyzer import main
             main()
             
             # Verify output was generated

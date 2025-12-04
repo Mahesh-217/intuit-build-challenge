@@ -7,8 +7,8 @@ import pandas as pd
 from functools import reduce
 from typing import Dict, List, Tuple, Any
 import operator
-from sales_reader import read_sales_data
-from sales_model import SalesRecord
+from .sales_reader import read_sales_data
+from .sales_model import SalesRecord
 
 
 class SalesAnalyzer:

@@ -17,16 +17,16 @@ This module performs data analysis on CSV sales data using functional programmin
 ## Project Structure
 
 ```
-assignment2/
-│
-├── sales_analyzer.py         # Main analysis engine with functional methods
-├── sales_model.py           # Typed data model for sales records
-├── sales_reader.py          # CSV reader with type conversion
-├── sales_data.csv           # Sample sales dataset (20 products)
-├── test_sales_analyzer.py   # Comprehensive unit tests
-├── test_components.py       # Component-level tests
-├── requirements.txt         # Dependencies
-└── README.md               # This file
+Assignment2/                  # Sales Data Analysis (Functional Programming)
+├── sales_model.py           # Typed data model (SalesRecord)
+├── sales_reader.py          # CSV parser with error handling
+├── sales_analyzer.py        # Main analysis engine + functional methods
+├── sales_data.csv           # Sample dataset (20 products)
+├── tests/
+│   ├── test_sales_analyzer.py   # Core functionality tests
+│   └── test_components.py       # Component-level tests
+├── requirements.txt         # Dependencies (pandas, numpy, pytest)
+└── README.md               # Assignment 2 details
 ```
 
 ---

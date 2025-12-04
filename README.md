@@ -72,7 +72,8 @@ python sales_analyzer.py
 Run all tests:
 ```bash
 cd Assignment2
-python -m pytest test_sales_analyzer.py test_components.py -v
+python3 -m coverage run --source=. -m unittest tests.test_sales_analyzer tests.test_components
+python3 -m coverage report --show-missing
 ```
 
 For more details on the design, functional programming patterns, and test coverage, see `Assignment2/README.md`.
@@ -131,7 +132,6 @@ Achievement: 94% Overall Code Coverage
 - Python 3.10+
 - pandas>=2.2.0 (Assignment 2)
 - numpy>=1.26.0 (Assignment 2)
-- pytest>=7.4.3 (Assignment 2)
 
 ## Running All Tests
 ```bash

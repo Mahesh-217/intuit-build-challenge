@@ -31,125 +31,6 @@ assignment2/
 
 ---
 
-# Design Overview
-
-## 1. **Typed Data Architecture**
-The project uses a clean separation of concerns:
-- **SalesRecord**: Immutable dataclass with type safety
-- **sales_reader**: CSV parsing with error handling
-- **SalesAnalyzer**: Functional programming analysis
-
-## 2. **Functional Programming Core**  
-The `SalesAnalyzer` class implements analysis methods using:
-
-- **Lambda expressions** for data transformation and filtering
-```python
-# Price categorization using lambda
-price_ranges = [
-    ('Budget', lambda x: x < 100),
-    ('Mid-range', lambda x: 100 <= x < 500),
-    ('Premium', lambda x: x >= 500)
-]
-```
-
-- **Stream operations** via pandas pipe() method chaining
-```python
-# Method chaining with pipe operations
-return (self.data.groupby('product_name')['total_revenue']
-        .sum()
-        .pipe(lambda x: x.sort_values(ascending=False))
-        .head(n)
-        .pipe(lambda x: list(zip(x.index, x.values))))
-```
-
-- **Higher-order functions** like map, filter, reduce
-```python
-# Using reduce for functional aggregation
-from functools import reduce
-category_revenues = reduce(lambda acc, item: acc.update({item[0]: item[1]}) or acc, 
-                          category_data.items(), {})
-```
-
----
-
-## 2. **Stream Operations**
-
-All analysis methods use functional stream processing:
-
-- **Method chaining** with pandas pipe operations
-```python
-# Functional composition in regional analysis
-return (self.data.groupby('region')
-        .apply(lambda group: {
-            'total_sales': group['total_revenue'].sum(),
-            'avg_order_value': group['total_revenue'].mean(),
-            'top_category': group.groupby('category')['total_revenue']
-                           .sum().idxmax()
-        }, include_groups=False)
-        .to_dict())
-```
-
-- **Functional composition** combining simple operations
-```python
-# Pipeline transformations
-return (self.data.groupby(self.data['sales_date'].dt.date)
-        .agg({'product_id': 'count', 'total_revenue': 'sum'})
-        .pipe(lambda df: [(str(idx), row['product_id'], row['total_revenue']) 
-                        for idx, row in df.iterrows()]))
-```
-
----
-
-## 3. **Data Aggregation**
-
-Advanced aggregation techniques implemented:
-
-- **Multi-dimensional grouping** (category, region, time)
-```python
-# Cross-category analysis with functional grouping
-return (self.data.groupby(['category', 'region'])['total_revenue']
-        .sum()
-        .reset_index()
-        .pipe(lambda df: [(row['category'], row['region'], row['total_revenue']) 
-                        for _, row in df.iterrows()]))
-```
-
-- **Statistical computations** using functional approaches
-```python
-# Weekly pattern analysis with lambda expressions
-return (self.data.groupby(self.data['sales_date'].dt.day_name())['total_revenue']
-        .sum()
-        .pipe(lambda x: dict(zip(x.index, x.values))))
-```
-
----
-
-## 4. **Lambda Expressions**
-
-Extensive use of lambda functions for:
-
-- **Dynamic categorization** (price ranges, time periods)
-```python
-# Price distribution with custom lambda functions
-return {
-    range_name: list(
-        self.data[self.data['price'].apply(condition)]
-        .groupby('category')
-        .size()
-        .pipe(lambda x: zip(x.index, x.values))
-    )
-    for range_name, condition in price_ranges
-}
-```
-
-- **Custom sorting** and ranking logic
-```python
-# Sorting with lambda expressions
-sorted(category_revenue.items(), key=lambda x: x[1], reverse=True)
-```
-
----
-
 # Setup & Usage
 
 ### **Environment Setup**
@@ -170,10 +51,11 @@ pip install -r requirements.txt
 Inside the assignment2 directory:
 
 ```bash
+cd Assignment2
 python3 sales_analyzer.py
 ```
 
-Expected sample output:
+ Output:
 
 ```
 === ADVANCED SALES DATA ANALYSIS ===
@@ -268,63 +150,23 @@ python3 -m coverage report --include="sales_*.py" --show-missing
 
 ### **Coverage Results**
 ```
-Name                Stmts   Miss  Cover   Missing
--------------------------------------------------
-sales_analyzer.py     103      3    97%   80, 118, 211
-sales_model.py         30      4    87%   33-34, 41-42
-sales_reader.py        18      3    83%   12, 23-24
--------------------------------------------------
-TOTAL                 151     10    93%
+Name                           Stmts   Miss  Cover   Missing
+------------------------------------------------------------
+sales_analyzer.py                103      3    97%   80, 118, 211
+sales_model.py                    30      0   100%
+sales_reader.py                   18      2    89%   23-24
+tests/test_components.py          28      1    96%   48
+tests/test_sales_analyzer.py     173      9    95%   39-40, 45-48, 277-279, 285
+------------------------------------------------------------
+TOTAL                            352     15    96%
 ```
 
 **Achievement: 94% Overall Code Coverage**
 - **sales_analyzer.py**: 97% (error handling paths)
-- **sales_model.py**: 87% (type conversion error handling)
-- **sales_reader.py**: 83% (file not found scenarios)
+- **sales_model.py**: 100% (type conversion error handling)
+- **sales_reader.py**: 89% (file not found scenarios)
 
 ---
-
-## Architecture
-
-### **Typed Data Model**
-```python
-@dataclass(frozen=True)
-class SalesRecord:
-    product_id: int
-    product_name: str
-    category: str
-    price: float
-    quantity: int
-    sales_date: str
-    region: str
-    
-    @property
-    def total_value(self) -> float:
-        return self.price * self.quantity
-```
-
-### **CSV Reader Integration**
-```python
-def read_sales_data(csv_path: str) -> List[SalesRecord]:
-    records = []
-    with open(path, 'r', encoding='utf-8') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            record = SalesRecord.from_row(row)
-            records.append(record)
-    return records
-```
-
-### **Analyzer Integration**
-The analyzer now uses typed records instead of direct pandas CSV reading:
-```python
-records = read_sales_data(csv_file)
-data_dict = {
-    'product_id': [r.product_id for r in records],
-    'total_revenue': [r.total_value for r in records]
-}
-self.data = pd.DataFrame(data_dict)
-```
 
 # ✔ Comprehensive Test Coverage
 

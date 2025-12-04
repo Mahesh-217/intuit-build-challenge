@@ -139,5 +139,5 @@ Achievement: 94% Overall Code Coverage
 cd Assignment1 && python -m unittest -v
 
 # Assignment 2  
-cd Assignment2 && python -m pytest -v
+cd Assignment2 && python -m unittest -v
 ```

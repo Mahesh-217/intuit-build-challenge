@@ -1,0 +1,85 @@
+Output
+
+=== ADVANCED SALES DATA ANALYSIS ===
+
+1. TOP 5 PRODUCTS BY REVENUE:
+   Smartphone X: $2,699.97
+   Laptop Pro: $2,599.98
+   Tablet Air: $1,199.98
+   Standing Desk: $899.98
+   Dining Table: $599.99
+
+2. REVENUE BY CATEGORY:
+   Electronics: $9,239.64
+   Furniture: $3,189.89
+
+3. DAILY SALES PERFORMANCE:
+   2024-01-18: 1.0 sales, $2,699.97 revenue
+   2024-01-15: 1.0 sales, $2,599.98 revenue
+   2024-01-22: 1.0 sales, $1,199.98 revenue
+   2024-01-19: 1.0 sales, $899.98 revenue
+   2024-01-28: 1.0 sales, $599.99 revenue
+   2024-01-20: 1.0 sales, $599.96 revenue
+   2024-01-29: 1.0 sales, $499.98 revenue
+   2024-01-25: 1.0 sales, $399.99 revenue
+   2024-01-24: 1.0 sales, $359.98 revenue
+   2024-01-26: 1.0 sales, $349.99 revenue
+
+4. REGIONAL ANALYSIS:
+   East:
+     Total Sales: $1,699.94
+     Avg Order Value: $339.99
+     Top Category: Electronics
+   North:
+     Total Sales: $4,099.89
+     Avg Order Value: $819.98
+     Top Category: Electronics
+   South:
+     Total Sales: $2,029.84
+     Avg Order Value: $405.97
+     Top Category: Electronics
+   West:
+     Total Sales: $4,599.86
+     Avg Order Value: $919.97
+     Top Category: Electronics
+
+5. PRICE DISTRIBUTION BY CATEGORY:
+   Budget:
+     Electronics: 6 products
+     Furniture: 1 products
+   Mid-range:
+     Electronics: 3 products
+     Furniture: 6 products
+   Premium:
+     Electronics: 3 products
+     Furniture: 1 products
+
+6. MONTHLY SALES TRENDS:
+   2024-01: $11,279.68 revenue, 32.0 units sold
+   2024-02: $1,149.85 revenue, 15.0 units sold
+
+7. WEEKLY SALES PATTERN:
+   Monday: $4,499.89
+   Thursday: $3,249.93
+   Friday: $1,429.95
+   Sunday: $1,199.97
+   Saturday: $1,099.90
+   Wednesday: $559.97
+   Tuesday: $389.92
+
+8. JANUARY 2024 ANALYSIS:
+   Sales in period: 15
+   Avg daily revenue: $751.98
+   Peak day: 2024-01-18 ($2699.97)
+
+   Code Coverage
+
+   Name                           Stmts   Miss  Cover   Missing
+------------------------------------------------------------
+sales_analyzer.py                103      3    97%   80, 118, 211
+sales_model.py                    30      0   100%
+sales_reader.py                   18      2    89%   23-24
+tests/test_components.py          28      1    96%   48
+tests/test_sales_analyzer.py     173      9    95%   39-40, 45-48, 277-279, 285
+------------------------------------------------------------
+TOTAL                            352     15    96%
